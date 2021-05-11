@@ -1,0 +1,6 @@
+.btn-primary {
+    &:hover,
+    &:focus {
+        background-color: $gray-900;
+    }
+}
