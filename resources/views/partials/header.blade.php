@@ -32,7 +32,7 @@
           <i class="bi bi-cart" data-bs-toggle="offcanvas" data-bs-target="#cartlist"></i>
           <span class="badge rounded-pill bg-primary" data-bs-toggle="offcanvas" data-bs-target="#cartlist">5</span>
         </button>
-        <button type="button" class="btn shadow-sm btn-light">
+        <button type="button" data-bs-target="#auth-modal" data-bs-toggle="modal" class="btn shadow-sm btn-light">
           <i class="bi bi-person-circle"></i>
         </button>
         <button type="button" class="btn shadow-sm btn-light" data-bs-toggle="collapse" data-bs-target="#searchbar">
@@ -123,4 +123,24 @@
 
     </div>
   </div>
+</div>
+
+
+
+<div class="modal fade" id="auth-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>
