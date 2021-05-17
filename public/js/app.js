@@ -3125,8 +3125,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_js_dist_dropdown__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_dropdown__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! bootstrap/js/dist/modal */ "./node_modules/bootstrap/js/dist/modal.js");
 /* harmony import */ var bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_modal__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var bootstrap_js_dist_toast__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! bootstrap/js/dist/toast */ "./node_modules/bootstrap/js/dist/toast.js");
-/* harmony import */ var bootstrap_js_dist_toast__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_toast__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var bootstrap_js_dist_tab__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! bootstrap/js/dist/tab */ "./node_modules/bootstrap/js/dist/tab.js");
+/* harmony import */ var bootstrap_js_dist_tab__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_tab__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var bootstrap_js_dist_offcanvas__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! bootstrap/js/dist/offcanvas */ "./node_modules/bootstrap/js/dist/offcanvas.js");
 /* harmony import */ var bootstrap_js_dist_offcanvas__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_offcanvas__WEBPACK_IMPORTED_MODULE_7__);
 
@@ -3136,8 +3136,8 @@ __webpack_require__.r(__webpack_exports__);
 
  // import 'bootstrap/js/dist/popover';
 // import 'bootstrap/js/dist/scrollspy';
-// import 'bootstrap/js/dist/tab';
 
+ // import "bootstrap/js/dist/toast";
 
  // import 'bootstrap/js/dist/tooltip';
 
@@ -7503,27 +7503,27 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/bootstrap/js/dist/toast.js":
-/*!*************************************************!*\
-  !*** ./node_modules/bootstrap/js/dist/toast.js ***!
-  \*************************************************/
+/***/ "./node_modules/bootstrap/js/dist/tab.js":
+/*!***********************************************!*\
+  !*** ./node_modules/bootstrap/js/dist/tab.js ***!
+  \***********************************************/
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 /*!
-  * Bootstrap toast.js v5.0.0-beta3 (https://getbootstrap.com/)
+  * Bootstrap tab.js v5.0.0-beta3 (https://getbootstrap.com/)
   * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
 (function (global, factory) {
-   true ? module.exports = factory(__webpack_require__(/*! ./dom/data.js */ "./node_modules/bootstrap/js/dist/dom/data.js"), __webpack_require__(/*! ./dom/event-handler.js */ "./node_modules/bootstrap/js/dist/dom/event-handler.js"), __webpack_require__(/*! ./dom/manipulator.js */ "./node_modules/bootstrap/js/dist/dom/manipulator.js"), __webpack_require__(/*! ./base-component.js */ "./node_modules/bootstrap/js/dist/base-component.js")) :
+   true ? module.exports = factory(__webpack_require__(/*! ./dom/data.js */ "./node_modules/bootstrap/js/dist/dom/data.js"), __webpack_require__(/*! ./dom/event-handler.js */ "./node_modules/bootstrap/js/dist/dom/event-handler.js"), __webpack_require__(/*! ./dom/selector-engine.js */ "./node_modules/bootstrap/js/dist/dom/selector-engine.js"), __webpack_require__(/*! ./base-component.js */ "./node_modules/bootstrap/js/dist/base-component.js")) :
   0;
-}(this, (function (Data, EventHandler, Manipulator, BaseComponent) { 'use strict';
+}(this, (function (Data, EventHandler, SelectorEngine, BaseComponent) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
   var Data__default = /*#__PURE__*/_interopDefaultLegacy(Data);
   var EventHandler__default = /*#__PURE__*/_interopDefaultLegacy(EventHandler);
-  var Manipulator__default = /*#__PURE__*/_interopDefaultLegacy(Manipulator);
+  var SelectorEngine__default = /*#__PURE__*/_interopDefaultLegacy(SelectorEngine);
   var BaseComponent__default = /*#__PURE__*/_interopDefaultLegacy(BaseComponent);
 
   /**
@@ -7535,12 +7535,33 @@ __webpack_require__.r(__webpack_exports__);
   const MILLISECONDS_MULTIPLIER = 1000;
   const TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
-  const toType = obj => {
-    if (obj === null || obj === undefined) {
-      return `${obj}`;
+  const getSelector = element => {
+    let selector = element.getAttribute('data-bs-target');
+
+    if (!selector || selector === '#') {
+      let hrefAttr = element.getAttribute('href'); // The only valid content that could double as a selector are IDs or classes,
+      // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
+      // `document.querySelector` will rightfully complain it is invalid.
+      // See https://github.com/twbs/bootstrap/issues/32273
+
+      if (!hrefAttr || !hrefAttr.includes('#') && !hrefAttr.startsWith('.')) {
+        return null;
+      } // Just in case some CMS puts out a full URL with the anchor appended
+
+
+      if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
+        hrefAttr = '#' + hrefAttr.split('#')[1];
+      }
+
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
     }
 
-    return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
+    return selector;
+  };
+
+  const getElementFromSelector = element => {
+    const selector = getSelector(element);
+    return selector ? document.querySelector(selector) : null;
   };
 
   const getTransitionDurationFromElement = element => {
@@ -7570,8 +7591,6 @@ __webpack_require__.r(__webpack_exports__);
     element.dispatchEvent(new Event(TRANSITION_END));
   };
 
-  const isElement = obj => (obj[0] || obj).nodeType;
-
   const emulateTransitionEnd = (element, duration) => {
     let called = false;
     const durationPadding = 5;
@@ -7590,16 +7609,20 @@ __webpack_require__.r(__webpack_exports__);
     }, emulatedDuration);
   };
 
-  const typeCheckConfig = (componentName, config, configTypes) => {
-    Object.keys(configTypes).forEach(property => {
-      const expectedTypes = configTypes[property];
-      const value = config[property];
-      const valueType = value && isElement(value) ? 'element' : toType(value);
+  const isDisabled = element => {
+    if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+      return true;
+    }
 
-      if (!new RegExp(expectedTypes).test(valueType)) {
-        throw new TypeError(`${componentName.toUpperCase()}: ` + `Option "${property}" provided type "${valueType}" ` + `but expected type "${expectedTypes}".`);
-      }
-    });
+    if (element.classList.contains('disabled')) {
+      return true;
+    }
+
+    if (typeof element.disabled !== 'undefined') {
+      return element.disabled;
+    }
+
+    return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
   };
 
   const reflow = element => element.offsetHeight;
@@ -7644,7 +7667,7 @@ __webpack_require__.r(__webpack_exports__);
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.0.0-beta3): toast.js
+   * Bootstrap (v5.0.0-beta3): tab.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -7654,176 +7677,154 @@ __webpack_require__.r(__webpack_exports__);
    * ------------------------------------------------------------------------
    */
 
-  const NAME = 'toast';
-  const DATA_KEY = 'bs.toast';
+  const NAME = 'tab';
+  const DATA_KEY = 'bs.tab';
   const EVENT_KEY = `.${DATA_KEY}`;
-  const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`;
+  const DATA_API_KEY = '.data-api';
   const EVENT_HIDE = `hide${EVENT_KEY}`;
   const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
   const EVENT_SHOW = `show${EVENT_KEY}`;
   const EVENT_SHOWN = `shown${EVENT_KEY}`;
+  const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`;
+  const CLASS_NAME_DROPDOWN_MENU = 'dropdown-menu';
+  const CLASS_NAME_ACTIVE = 'active';
   const CLASS_NAME_FADE = 'fade';
-  const CLASS_NAME_HIDE = 'hide';
   const CLASS_NAME_SHOW = 'show';
-  const CLASS_NAME_SHOWING = 'showing';
-  const DefaultType = {
-    animation: 'boolean',
-    autohide: 'boolean',
-    delay: 'number'
-  };
-  const Default = {
-    animation: true,
-    autohide: true,
-    delay: 5000
-  };
-  const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="toast"]';
+  const SELECTOR_DROPDOWN = '.dropdown';
+  const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
+  const SELECTOR_ACTIVE = '.active';
+  const SELECTOR_ACTIVE_UL = ':scope > li > .active';
+  const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]';
+  const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
+  const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active';
   /**
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
    */
 
-  class Toast extends BaseComponent__default['default'] {
-    constructor(element, config) {
-      super(element);
-      this._config = this._getConfig(config);
-      this._timeout = null;
-
-      this._setListeners();
-    } // Getters
-
-
-    static get DefaultType() {
-      return DefaultType;
-    }
-
-    static get Default() {
-      return Default;
-    }
-
+  class Tab extends BaseComponent__default['default'] {
+    // Getters
     static get DATA_KEY() {
       return DATA_KEY;
     } // Public
 
 
     show() {
-      const showEvent = EventHandler__default['default'].trigger(this._element, EVENT_SHOW);
-
-      if (showEvent.defaultPrevented) {
+      if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && this._element.classList.contains(CLASS_NAME_ACTIVE) || isDisabled(this._element)) {
         return;
       }
 
-      this._clearTimeout();
+      let previous;
+      const target = getElementFromSelector(this._element);
 
-      if (this._config.animation) {
-        this._element.classList.add(CLASS_NAME_FADE);
+      const listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP);
+
+      if (listElement) {
+        const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE;
+        previous = SelectorEngine__default['default'].find(itemSelector, listElement);
+        previous = previous[previous.length - 1];
       }
 
+      const hideEvent = previous ? EventHandler__default['default'].trigger(previous, EVENT_HIDE, {
+        relatedTarget: this._element
+      }) : null;
+      const showEvent = EventHandler__default['default'].trigger(this._element, EVENT_SHOW, {
+        relatedTarget: previous
+      });
+
+      if (showEvent.defaultPrevented || hideEvent !== null && hideEvent.defaultPrevented) {
+        return;
+      }
+
+      this._activate(this._element, listElement);
+
       const complete = () => {
-        this._element.classList.remove(CLASS_NAME_SHOWING);
-
-        this._element.classList.add(CLASS_NAME_SHOW);
-
-        EventHandler__default['default'].trigger(this._element, EVENT_SHOWN);
-
-        if (this._config.autohide) {
-          this._timeout = setTimeout(() => {
-            this.hide();
-          }, this._config.delay);
-        }
+        EventHandler__default['default'].trigger(previous, EVENT_HIDDEN, {
+          relatedTarget: this._element
+        });
+        EventHandler__default['default'].trigger(this._element, EVENT_SHOWN, {
+          relatedTarget: previous
+        });
       };
 
-      this._element.classList.remove(CLASS_NAME_HIDE);
-
-      reflow(this._element);
-
-      this._element.classList.add(CLASS_NAME_SHOWING);
-
-      if (this._config.animation) {
-        const transitionDuration = getTransitionDurationFromElement(this._element);
-        EventHandler__default['default'].one(this._element, 'transitionend', complete);
-        emulateTransitionEnd(this._element, transitionDuration);
+      if (target) {
+        this._activate(target, target.parentNode, complete);
       } else {
         complete();
       }
-    }
-
-    hide() {
-      if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
-        return;
-      }
-
-      const hideEvent = EventHandler__default['default'].trigger(this._element, EVENT_HIDE);
-
-      if (hideEvent.defaultPrevented) {
-        return;
-      }
-
-      const complete = () => {
-        this._element.classList.add(CLASS_NAME_HIDE);
-
-        EventHandler__default['default'].trigger(this._element, EVENT_HIDDEN);
-      };
-
-      this._element.classList.remove(CLASS_NAME_SHOW);
-
-      if (this._config.animation) {
-        const transitionDuration = getTransitionDurationFromElement(this._element);
-        EventHandler__default['default'].one(this._element, 'transitionend', complete);
-        emulateTransitionEnd(this._element, transitionDuration);
-      } else {
-        complete();
-      }
-    }
-
-    dispose() {
-      this._clearTimeout();
-
-      if (this._element.classList.contains(CLASS_NAME_SHOW)) {
-        this._element.classList.remove(CLASS_NAME_SHOW);
-      }
-
-      EventHandler__default['default'].off(this._element, EVENT_CLICK_DISMISS);
-      super.dispose();
-      this._config = null;
     } // Private
 
 
-    _getConfig(config) {
-      config = { ...Default,
-        ...Manipulator__default['default'].getDataAttributes(this._element),
-        ...(typeof config === 'object' && config ? config : {})
-      };
-      typeCheckConfig(NAME, config, this.constructor.DefaultType);
-      return config;
+    _activate(element, container, callback) {
+      const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ? SelectorEngine__default['default'].find(SELECTOR_ACTIVE_UL, container) : SelectorEngine__default['default'].children(container, SELECTOR_ACTIVE);
+      const active = activeElements[0];
+      const isTransitioning = callback && active && active.classList.contains(CLASS_NAME_FADE);
+
+      const complete = () => this._transitionComplete(element, active, callback);
+
+      if (active && isTransitioning) {
+        const transitionDuration = getTransitionDurationFromElement(active);
+        active.classList.remove(CLASS_NAME_SHOW);
+        EventHandler__default['default'].one(active, 'transitionend', complete);
+        emulateTransitionEnd(active, transitionDuration);
+      } else {
+        complete();
+      }
     }
 
-    _setListeners() {
-      EventHandler__default['default'].on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide());
-    }
+    _transitionComplete(element, active, callback) {
+      if (active) {
+        active.classList.remove(CLASS_NAME_ACTIVE);
+        const dropdownChild = SelectorEngine__default['default'].findOne(SELECTOR_DROPDOWN_ACTIVE_CHILD, active.parentNode);
 
-    _clearTimeout() {
-      clearTimeout(this._timeout);
-      this._timeout = null;
+        if (dropdownChild) {
+          dropdownChild.classList.remove(CLASS_NAME_ACTIVE);
+        }
+
+        if (active.getAttribute('role') === 'tab') {
+          active.setAttribute('aria-selected', false);
+        }
+      }
+
+      element.classList.add(CLASS_NAME_ACTIVE);
+
+      if (element.getAttribute('role') === 'tab') {
+        element.setAttribute('aria-selected', true);
+      }
+
+      reflow(element);
+
+      if (element.classList.contains(CLASS_NAME_FADE)) {
+        element.classList.add(CLASS_NAME_SHOW);
+      }
+
+      if (element.parentNode && element.parentNode.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
+        const dropdownElement = element.closest(SELECTOR_DROPDOWN);
+
+        if (dropdownElement) {
+          SelectorEngine__default['default'].find(SELECTOR_DROPDOWN_TOGGLE).forEach(dropdown => dropdown.classList.add(CLASS_NAME_ACTIVE));
+        }
+
+        element.setAttribute('aria-expanded', true);
+      }
+
+      if (callback) {
+        callback();
+      }
     } // Static
 
 
     static jQueryInterface(config) {
       return this.each(function () {
-        let data = Data__default['default'].get(this, DATA_KEY);
-
-        const _config = typeof config === 'object' && config;
-
-        if (!data) {
-          data = new Toast(this, _config);
-        }
+        const data = Data__default['default'].get(this, DATA_KEY) || new Tab(this);
 
         if (typeof config === 'string') {
           if (typeof data[config] === 'undefined') {
             throw new TypeError(`No method named "${config}"`);
           }
 
-          data[config](this);
+          data[config]();
         }
       });
     }
@@ -7831,18 +7832,29 @@ __webpack_require__.r(__webpack_exports__);
   }
   /**
    * ------------------------------------------------------------------------
-   * jQuery
+   * Data Api implementation
    * ------------------------------------------------------------------------
-   * add .Toast to jQuery only if jQuery is present
    */
 
 
-  defineJQueryPlugin(NAME, Toast);
+  EventHandler__default['default'].on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+    event.preventDefault();
+    const data = Data__default['default'].get(this, DATA_KEY) || new Tab(this);
+    data.show();
+  });
+  /**
+   * ------------------------------------------------------------------------
+   * jQuery
+   * ------------------------------------------------------------------------
+   * add .Tab to jQuery only if jQuery is present
+   */
 
-  return Toast;
+  defineJQueryPlugin(NAME, Tab);
+
+  return Tab;
 
 })));
-//# sourceMappingURL=toast.js.map
+//# sourceMappingURL=tab.js.map
 
 
 /***/ }),
