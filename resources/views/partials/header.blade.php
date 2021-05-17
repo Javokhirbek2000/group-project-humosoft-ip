@@ -32,7 +32,7 @@
           <i class="bi bi-cart" data-bs-toggle="offcanvas" data-bs-target="#cartlist"></i>
           <span class="badge rounded-pill bg-primary" data-bs-toggle="offcanvas" data-bs-target="#cartlist">5</span>
         </button>
-        <button type="button" class="btn shadow-sm btn-light">
+        <button type="button" data-bs-target="#auth-modal" data-bs-toggle="modal" class="btn shadow-sm btn-light">
           <i class="bi bi-person-circle"></i>
         </button>
         <button type="button" class="btn shadow-sm btn-light" data-bs-toggle="collapse" data-bs-target="#searchbar">
@@ -124,3 +124,7 @@
     </div>
   </div>
 </div>
+@include("modals.authModal")
+
+
+

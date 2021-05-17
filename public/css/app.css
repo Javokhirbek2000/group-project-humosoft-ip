@@ -12209,6 +12209,10 @@ body {
   height: 80vh;
 }
 
+.fs-12px {
+  font-size: 12px !important;
+}
+
 .text-one-line {
   text-overflow: ellipsis;
   overflow: hidden;
