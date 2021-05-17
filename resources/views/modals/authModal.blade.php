@@ -3,10 +3,10 @@
         <div class="modal-content">
             <ul class="nav nav-tabs d-flex" id="myTab" role="tablist">
                 <li class="nav-item w-50" role="presentation">
-                    <button class="nav-link active w-100" id="signin-tab" data-bs-toggle="tab" data-bs-target="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign In</button>
+                    <button class="nav-link active w-100 text-uppercase fw-bold" id="signin-tab" data-bs-toggle="tab" data-bs-target="#signin" type="button" role="tab" aria-controls="home" aria-selected="true">Sign In</button>
                 </li>
                 <li class="nav-item w-50" role="presentation">
-                    <button class="nav-link w-100" id="signuptab-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</button>
+                    <button class="nav-link w-100 text-uppercase fw-bold" id="signuptab-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -29,7 +29,7 @@
                             <div class="mb-3 forgot-password">
                                 <a href="#" class="text-">Forgot password?</a>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100 py-2">SIGN IN</button>
+                            <button type="submit" class="btn btn-primary  w-100 py-2">SIGN IN</button>
                         </form>
                     </div>
                     <div class="d-flex align-items-center px-3">
