@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-Route::get('/about', function () {
-    return view('pages.about');
-});
-
 Route::get('/collection/{slug}', function () {
     return view('pages.collection');
 });
