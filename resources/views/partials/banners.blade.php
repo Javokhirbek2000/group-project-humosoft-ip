@@ -1,6 +1,6 @@
 <div id="bannerSlider" class="carousel slide banner-slider " data-bs-ride="carousel">
   <div class="carousel-indicators">
-    @foreach (Banner::all() as $banner)
+    @foreach (App\Models\Banner::all() as $banner)
       <button type="button" data-bs-target="#bannerSlider" data-bs-slide-to="{{ $banner->id }}"
         class="{{ $banner->id == 0 ? 'active' : '' }}" aria-current="{{ $banner->id == 0 }}"
         aria-label="{{ $banner->name }}"></button>
@@ -8,7 +8,7 @@
 
   </div>
   <div class="carousel-inner">
-    @foreach (Banner::all() as $banner)
+    @foreach (App\Models\Banner::all() as $banner)
       <div class="carousel-item  {{ $banner->id == 0 ? 'active' : '' }}  ">
 
         <div class="img-mask h-80vh"></div>
