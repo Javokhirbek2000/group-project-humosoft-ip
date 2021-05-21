@@ -3,7 +3,7 @@
 @section('content')
 
 <section>
-    <div class="bg-img-hero mb-14" style="background-image: url(../../assets/img/1920x600/img1.jpg);">
+    <div class="bg-img-hero mb-14">
         <div class="container">
             <div class="flex-content-center max-width-620-lg flex-column mx-auto text-center min-height-564">
                 <h1 class="h1 font-weight-bold">About Us</h1>
@@ -42,7 +42,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-gray-1 py-12 mb-10 mb-lg-15">
+    <div class="bg-gray-1 py-12 mb-5 mb-lg-15">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-5 mb-xl-0 col-xl text-center">
