@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
   <div class="container-fluid">
-    <a class="navbar-brand me-5" href="#">
-      <img src="img/logo.png" height="50" alt="logo">
+    <a class="navbar-brand me-5" href="/">
+      <img src="{{asset("img/logo.png")}}" height="50" alt="logo">
     </a>
     <button class="navbar-toggler shadow-sm btn-light" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -10,7 +10,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center text-lg-start">
         <li class="nav-item dropdown">
           <a class="nav-link active" href="/">
             HOME
@@ -26,7 +26,7 @@
           <a class="nav-link" href="/contact">CONTACTS</a>
         </li>
       </ul>
-      <div class="btn-group">
+      <div class="btn-group w-100 w-lg-auto">
         <button type="button" class="btn shadow-sm btn-light" data-bs-toggle="offcanvas" data-bs-target="#wishlist">
           <i class="bi bi-heart" data-bs-toggle="offcanvas" data-bs-target="#wishlist"></i>
           <span class="badge rounded-pill bg-primary" data-bs-toggle="offcanvas" data-bs-target="#wishlist">10</span>

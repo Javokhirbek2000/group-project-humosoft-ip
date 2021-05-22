@@ -16,7 +16,5 @@
             </div>
           </a>
         </div>
-      @endfor
-    </div>
   </x-section>
 @endsection

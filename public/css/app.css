@@ -12213,6 +12213,11 @@ body {
   font-size: 12px !important;
 }
 
+@media screen and (min-width: 992px) {
+  .w-lg-auto {
+    width: auto !important;
+  }
+}
 .text-one-line {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -12469,4 +12474,12 @@ body {
   .product-item {
     margin: 0 0 30px;
   }
+}
+.team-member img {
+  min-width: 250px;
+  min-height: 250px;
+  max-width: 250px;
+  max-height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
