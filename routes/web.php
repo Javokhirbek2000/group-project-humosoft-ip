@@ -25,8 +25,9 @@ Route::get('/contact', function () {
 Route::get('/shop', function () {
     return view('pages.shop');
 });
-Route::get('/collection/{slug}', function () {
-    return view('pages.collection');
+Route::get('/collection/{slug}', function ($slug) {
+
+    return view('pages.collection', ['title' => $slug]);
 });
 
 Route::get('/product/{slug}', function () {

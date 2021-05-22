@@ -19,4 +19,4 @@
             @endfor
         </div>
     </x-section>
-@endsection`
+@endsection
