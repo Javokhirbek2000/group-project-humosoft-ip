@@ -1,3 +1,4 @@
+@use "sass:map";
 .square-50 {
     width: 50px !important;
     height: 50px !important;
@@ -29,6 +30,13 @@
 .h-80vh {
     height: 80vh;
 }
-.fs-12px{
+.fs-12px {
     font-size:12px !important;
 }
+
+
+@media screen and (min-width: map.get($grid-breakpoints, "lg")) {
+    .w-lg-auto{
+        width:auto !important;
+    }
+} 
