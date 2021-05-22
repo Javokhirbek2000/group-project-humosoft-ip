@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
   <div class="container-fluid">
-    <a class="navbar-brand me-5" href="#">
-      <img src="img/logo.png" height="50" alt="logo">
+    <a class="navbar-brand me-5" href="/">
+      <img src="{{asset("img/logo.png")}}" height="50" alt="logo">
     </a>
     <button class="navbar-toggler shadow-sm btn-light" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
