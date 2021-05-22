@@ -12213,6 +12213,11 @@ body {
   font-size: 12px !important;
 }
 
+@media screen and (min-width: 992px) {
+  .w-lg-auto {
+    width: auto !important;
+  }
+}
 .text-one-line {
   text-overflow: ellipsis;
   overflow: hidden;

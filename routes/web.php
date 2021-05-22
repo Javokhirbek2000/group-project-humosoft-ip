@@ -32,4 +32,4 @@ Route::get('/collection/{slug}', function ($slug) {
 
 Route::get('/product/{slug}', function () {
     return view('pages.product');
-});
+})->name("product");
