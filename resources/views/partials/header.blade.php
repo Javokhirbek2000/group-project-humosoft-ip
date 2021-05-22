@@ -17,10 +17,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">SHOP</a>
+          <a class="nav-link" href="/shop">SHOP</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">ABOUT US</a>
+          <a class="nav-link" href="/about">ABOUT US</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">CONTACTS</a>
         </li>
       </ul>
       <div class="btn-group">
