@@ -22,6 +22,9 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('pages.contact');
 });
+Route::get('/shop', function () {
+    return view('pages.shop');
+});
 Route::get('/collection/{slug}', function () {
     return view('pages.collection');
 });
