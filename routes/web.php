@@ -32,3 +32,10 @@ Route::get('/collection/{slug}', function () {
 Route::get('/product/{slug}', function () {
     return view('pages.product');
 });
+
+
+
+//ADMIN
+Route::get('/admin', function () {
+    return view('pages.admin');
+});

@@ -1,6 +1,7 @@
 @extends('layouts.index')
 
 @section('content')
+faefaef
   @include('partials.banners')
   <x-section title="Featured Collections">
     <div class="row">
