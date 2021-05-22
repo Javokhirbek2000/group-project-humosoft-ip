@@ -72,18 +72,19 @@
 .product-item .product-links li {
     display: inline-block;
 }
-.product-item .product-links li a {
+.product-item .product-links li button {
     color: #fff;
     background: $black;
     font-size: 16px;
     line-height: 38px;
     width: 40px;
     height: 40px;
+    padding: 0;
     display: block;
     transition: all 0.3s ease 0s;
     text-decoration: none;
 }
-.product-item .product-links li a:hover {
+.product-item .product-links li button:hover {
     color: #fff;
     background: $red;
 }
