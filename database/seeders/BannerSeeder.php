@@ -19,7 +19,7 @@ class BannerSeeder extends Seeder
     	foreach (range(1, 5) as $index) {
     		DB::table('banners')->insert([
 	            'name' => $faker->sentence(),
-	            'description' => $faker->paragraph(),
+	            'description' => $faker->sentence(),
 	            'url' => $faker->url(),
 	        ]);
     	}

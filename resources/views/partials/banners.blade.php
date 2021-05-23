@@ -1,18 +1,18 @@
 <div id="bannerSlider" class="carousel slide banner-slider " data-bs-ride="carousel">
   <div class="carousel-indicators">
-    @foreach (App\Models\Banner::all() as $banner)
-      <button type="button" data-bs-target="#bannerSlider" data-bs-slide-to="{{ $banner->id }}"
-        class="{{ $banner->id == 0 ? 'active' : '' }}" aria-current="{{ $banner->id == 0 }}"
+    @foreach (App\Models\Banner::all() as $i => $banner)
+      <button type="button" data-bs-target="#bannerSlider" data-bs-slide-to="{{ $i }}"
+        class="{{ $i == 0 ? 'active' : '' }}" aria-current="{{ $i == 0 }}"
         aria-label="{{ $banner->name }}"></button>
     @endforeach
 
   </div>
   <div class="carousel-inner">
-    @foreach (App\Models\Banner::all() as $banner)
-      <div class="carousel-item  {{ $banner->id == 0 ? 'active' : '' }}  ">
+    @foreach (App\Models\Banner::all() as $i => $banner)
+      <div class="carousel-item  {{ $i == 0 ? 'active' : '' }}  ">
 
         <div class="img-mask h-80vh"></div>
-        <img src="https://picsum.photos/id/{{ $banner->id }}/1200/500" class="d-block w-100 h-80vh object-fit-cover"
+        <img src="https://picsum.photos/id/{{ $i }}/1200/500" class="d-block w-100 h-80vh object-fit-cover"
           alt="...">
 
         <div class="carousel-caption d-block z-index-2 top-50 start-50 translate-middle w-75">
