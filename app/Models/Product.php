@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    public function imagesList() {
+    	return explode("\n", $this->images);
+    }
+    public function imagesComma() {
+    	return implode(",", $this->imagesList());
+    }
 }

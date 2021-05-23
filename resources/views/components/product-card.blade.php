@@ -1,12 +1,19 @@
 <div class="product-item">
   <div class="product-image">
-    <a href="{{ route('product', 'womens-shirt-top') }}" class="image">
-      <img class="pic-1" src="https://picsum.photos/id/{{ $i + 1 }}/200/300">
-      <img class="pic-2" src="https://picsum.photos/id/{{ $i + 10 }}/200/300">
+    <a href="{{ route('product', $product->id) }}" class="image">
+      @php($images = $product->imagesList())
+      @if(count($images)>0)
+        <img class="pic-1" src="{{ $images[0] }}">
+        <img class="pic-2" src="{{ $images[count($images)-1] }}">
+      @endif
     </a>
-    <ul class="product-links" data-id="{{ $i + 1 }}" data-name="Women's Shirt Top" data-price="78.90"
-      data-description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero facilis non culpa expedita debitis ipsam assumenda aut id nemo ab?"
-      data-images="https://picsum.photos/id/237/300/300,https://picsum.photos/id/238/300/300,https://picsum.photos/id/239/300/300">
+    <ul
+      class="product-links"
+      data-id="{{ $product->id }}"
+      data-name="{{ $product->name }}"
+      data-price="{{ $product->price }}"
+      data-description="{{ $product->description }}"
+      data-images="{{ $product->imagesComma() }}">
       <li><button class="btn js-wishlist" title="Add to favorites"><i class="bi bi-heart"></i></button></li>
       <li><button class="btn js-clipboard" title="Copy link"><i class="bi bi-clipboard"></i></button></li>
       <li><button class="btn js-quickview" title="Quick view"><i class="bi bi-eye"></i></button></li>
@@ -14,7 +21,7 @@
     </ul>
   </div>
   <div class="product-content">
-    <h3 class="title"><a href="#">Women's Shirt Top</a></h3>
-    <div class="price">$78.90</div>
+    <h3 class="title"><a href="#">{{ $product->name }}</a></h3>
+    <div class="price">${{ $product->price }}</div>
   </div>
 </div>

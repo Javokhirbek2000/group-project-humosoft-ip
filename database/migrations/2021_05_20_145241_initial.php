@@ -17,7 +17,17 @@ class Initial extends Migration
             $table->integer('user_id');
             $table->id();
             $table->string('address');
+            $table->enum(
+                'status',
+                ['fullfilled', 'unfullfilled', 'canceled']
+            )->default("unfullfilled");
+            $table->float('price', 8, 2);
             $table->timestamps();
+        });
+        Schema::create('orders_products', function (Blueprint $table) {
+            $table->integer('order_id');
+            $table->integer('product_id');
+            $table->primary(['order_id', 'product_id']);
         });
 
         Schema::create('products', function (Blueprint $table) {

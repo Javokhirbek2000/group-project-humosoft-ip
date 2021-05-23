@@ -20,6 +20,11 @@ class ProductSeeder extends Seeder
     		DB::table('products')->insert([
 	            'name' => $faker->word(),
 	            'description' => $faker->sentence(),
+	            'images'=> implode("\n", [
+					"https://picsum.photos/id/237/300/300",
+					"https://picsum.photos/id/238/300/300",
+					"https://picsum.photos/id/239/300/300",
+				]),
 	            'brand' => $faker->word(),
 	            'price' => $faker->numberBetween(0, 1000)/10,
 	            'available' => $faker->numberBetween(0, 1000),

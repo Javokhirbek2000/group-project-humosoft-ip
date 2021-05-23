@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Models\Product;
+use App\Models\Collection;
 
 Route::get('/', function () {
     return view('home.index');
@@ -25,12 +27,18 @@ Route::get('/contact', function () {
 Route::get('/shop', function () {
     return view('pages.shop');
 });
-Route::get('/collection/{slug}', function ($slug) {
-    return view('pages.collection', ['title' => $slug]);
-});
+Route::get('/collection/{collection}', function (Collection $collection) {
+    return view('pages.collection', compact('collection'));
+})->name("collection");
 
-Route::get('/product/{slug}', function () {
-    return view('pages.product');
+Route::get('/search', function () {
+	$search = request()->get('search');
+	$results = App\Models\Product::where('name', 'LIKE', '%' . $search. '%')->get();
+    return view('pages.search_results', compact('search', 'results'));
+})->name('search');
+
+Route::get('/product/{product}', function (Product $product) {
+    return view('pages.product', ['product' => $product]);
 })->name("product");
 
 
