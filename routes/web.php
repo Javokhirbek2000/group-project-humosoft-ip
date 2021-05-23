@@ -41,7 +41,9 @@ Route::get('/product/{product}', function (Product $product) {
     return view('pages.product', ['product' => $product]);
 })->name("product");
 
-
+Route::get('/checkout', function () {
+    return view('pages.checkout');
+});
 
 //ADMIN
 Route::get('/admin', function () {

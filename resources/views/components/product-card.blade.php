@@ -15,7 +15,7 @@
       data-description="{{ $product->description }}"
       data-images="{{ $product->imagesComma() }}">
       <li><button class="btn js-wishlist" title="Add to favorites"><i class="bi bi-heart"></i></button></li>
-      <li><button class="btn js-clipboard" title="Copy link"><i class="bi bi-clipboard"></i></button></li>
+      <li><button class="btn js-clipboard" title="Copy link"><i class="bi bi-clipboard"></i></button><input type="text" class="visually-hidden" value="https:{{ route('product', 'womens-shirt-top') }}" class="copy-input"></li>
       <li><button class="btn js-quickview" title="Quick view"><i class="bi bi-eye"></i></button></li>
       <li><button class="btn js-cart" title="Add to cart"><i class="bi bi-bag"></i></button></li>
     </ul>
