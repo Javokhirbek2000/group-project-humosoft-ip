@@ -45,6 +45,11 @@ Route::get('/checkout', function () {
     return view('pages.checkout');
 });
 
+Route::get('/profile', function () {
+    return view('pages.profile');
+});
+
+
 
 //ADMIN
 Route::get('/admin', function () {
