@@ -36,7 +36,7 @@ class Initial extends Migration
 
             $table->string('name');
             $table->text('description');
-            $table->multiLineString('images')->nullable();
+            $table->json('images')->nullable();
             $table->string('brand');
             $table->float('price', 8, 2);
 
