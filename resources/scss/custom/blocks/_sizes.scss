@@ -31,12 +31,17 @@
     height: 80vh;
 }
 .fs-12px {
-    font-size:12px !important;
+    font-size: 12px !important;
 }
 
-
 @media screen and (min-width: map.get($grid-breakpoints, "lg")) {
-    .w-lg-auto{
-        width:auto !important;
+    .w-lg-auto {
+        width: auto !important;
     }
-} 
+}
+
+@media screen and (min-width: map.get($grid-breakpoints, "md")) {
+    .w-md-50 {
+        width: 50% !important;
+    }
+}

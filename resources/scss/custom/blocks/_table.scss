@@ -1,0 +1,62 @@
+.orders-history {
+	thead {
+		th {
+			padding: 20px 0;
+			font-size: 16px;
+			white-space: nowrap;
+			font-weight: 600;
+			color: $gray-900;
+		}
+	}
+	th,
+	td {
+		text-align: center;
+		vertical-align: middle;
+		font-size: 16px;
+		a {
+			color: black;
+		}
+	}
+	.products-ordered {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		a {
+			display: flex;
+			width: 50px;
+			height: 50px;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+	.orders-details {
+		thead {
+			th {
+				padding: 10px 0;
+				font-size: 14px;
+				white-space: nowrap;
+				font-weight: 600;
+				color: $gray-900;
+			}
+		}
+		td {
+			font-size: 14px;
+		}
+		a {
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			text-decoration: none;
+			text-align: start;
+			img {
+				width: 50px;
+				height: 50px;
+				object-fit: cover;
+				margin-right: 10px;
+			}
+		}
+	}
+}

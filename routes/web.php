@@ -28,6 +28,12 @@ Route::get('/shop', function () {
 Route::get('/collection/{slug}', function ($slug) {
     return view('pages.collection', ['title' => $slug]);
 });
+Route::get('/profile', function () {
+    return view('pages.profile');
+});
+Route::get('/login', function () {
+    return view('pages.login');
+});
 
 Route::get('/product/{slug}', function () {
     return view('pages.product');
