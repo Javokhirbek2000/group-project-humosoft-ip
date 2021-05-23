@@ -10,9 +10,8 @@
             <img class="img-fluid mb-3" src="img/elegent.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="font-size-18 mb-3">What we really do?</h5>
-              <p class="mx-auto"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex aliquid ipsum vero fuga
-                deserunt rem magnam, blanditiis officiis architecto commodi doloribus hic quis repellendus optio
-                voluptatibus nam deleniti. Atque, ad?</p>
+              <p class="mx-auto"> We develop an easy to use web based interface where users can search for
+products, view a complete description of the products and order the products</p>
             </div>
           </div>
         </div>
@@ -21,9 +20,10 @@
             <img class="img-fluid mb-3" src="img/vision.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="font-size-18 mb-3">Our Vision</h5>
-              <p class="mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam modi consequuntur error
-                voluptatum sequi numquam minus laudantium porro explicabo, fuga incidunt laboriosam cum debitis pariatur
-                eum nam libero quos praesentium.</p>
+              <p class="mx-auto">The motive of this Online Shopping Web Application is to allow the user to play
+with the search tool and create different combinatorial search criterion to perform
+exhaustive search and provide Interactive interface through which a user can interact with different areas
+of application easily</p>
             </div>
           </div>
         </div>
@@ -32,9 +32,7 @@
             <img class="img-fluid mb-3" src="/img/history.jpg" alt="Card image cap">
             <div class="card-body">
               <h5 class="font-size-18 mb-3">History of Beginning</h5>
-              <p class="mx-auto">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae voluptatem illo ipsam
-                sunt repellat eveniet dolore ipsum deserunt sequi, fugiat animi voluptas maxime inventore laboriosam nisi
-                facere alias nemo! Ipsam!</p>
+              <p class="mx-auto">We see the problem that people need online shopping because it is more convinent than traditonal one.</p>
             </div>
           </div>
         </div>
@@ -86,15 +84,15 @@
           <div class="row">
             <div class="col-lg-6 mb-5 mb-lg-8">
               <h3 class="font-size-18 text-gray-39 mb-4">What we really do?</h3>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error quis aspernatur quas accusantium
-                architecto repudiandae facilis aliquid ratione excepturi, cumque, expedita reiciendis pariatur cupiditate
-                nihil corporis, praesentium ea nemo distinctio.</p>
+              <p>We develop an easy to use web based interface where users can search for
+products, view a complete description of the products and order the product</p>
             </div>
             <div class="col-lg-6 mb-5 mb-lg-8">
               <h3 class="font-size-18 text-gray-39 mb-4">Our Vision</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, quis omnis. Itaque minus amet
-                repudiandae, beatae nihil eum placeat tempore! Eum voluptatem voluptas quae magni placeat reprehenderit,
-                vitae inventore sed.</p>
+              <p>The motive of this Online Shopping Web Application is to allow the user to play
+with the search tool and create different combinatorial search criterion to perform
+exhaustive search and provide Interactive interface through which a user can interact with different areas
+of application easily</p>
             </div>
             <div class="col-lg-6 mb-5 mb-lg-8">
               <h3 class="font-size-18 text-gray-39 mb-4">History of the Company</h3>
