@@ -33,7 +33,9 @@ Route::get('/product/{slug}', function () {
     return view('pages.product');
 })->name("product");
 
-
+Route::get('/checkout', function () {
+    return view('pages.checkout');
+});
 
 //ADMIN
 Route::get('/admin', function () {
