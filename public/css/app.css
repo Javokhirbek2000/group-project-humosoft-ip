@@ -12174,7 +12174,11 @@ textarea.form-control-lg {
   }
 }
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Inter", sans-serif;
+}
+
+.wishlist-wrapper {
+  grid-template-rows: 1fr;
 }
 
 .square-50 {
@@ -12213,6 +12217,11 @@ body {
   font-size: 12px !important;
 }
 
+@media screen and (min-width: 992px) {
+  .w-lg-auto {
+    width: auto !important;
+  }
+}
 .text-one-line {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -12385,19 +12394,20 @@ body {
   display: inline-block;
 }
 
-.product-item .product-links li a {
+.product-item .product-links li button {
   color: #fff;
   background: #000;
   font-size: 16px;
   line-height: 38px;
   width: 40px;
   height: 40px;
+  padding: 0;
   display: block;
   transition: all 0.3s ease 0s;
   text-decoration: none;
 }
 
-.product-item .product-links li a:hover {
+.product-item .product-links li button:hover {
   color: #fff;
   background: #ff0019;
 }
@@ -12469,4 +12479,12 @@ body {
   .product-item {
     margin: 0 0 30px;
   }
+}
+.team-member img {
+  min-width: 250px;
+  min-height: 250px;
+  max-width: 250px;
+  max-height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }

@@ -19,11 +19,23 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('pages.about');
 });
-
-Route::get('/collection/{slug}', function () {
-    return view('pages.collection');
+Route::get('/contact', function () {
+    return view('pages.contact');
+});
+Route::get('/shop', function () {
+    return view('pages.shop');
+});
+Route::get('/collection/{slug}', function ($slug) {
+    return view('pages.collection', ['title' => $slug]);
 });
 
 Route::get('/product/{slug}', function () {
     return view('pages.product');
+})->name("product");
+
+
+
+//ADMIN
+Route::get('/admin', function () {
+    return view('pages.admin');
 });

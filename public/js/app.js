@@ -3129,6 +3129,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_js_dist_tab__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_tab__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var bootstrap_js_dist_offcanvas__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! bootstrap/js/dist/offcanvas */ "./node_modules/bootstrap/js/dist/offcanvas.js");
 /* harmony import */ var bootstrap_js_dist_offcanvas__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(bootstrap_js_dist_offcanvas__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./functions */ "./resources/js/functions.js");
 
 
 
@@ -3139,7 +3140,206 @@ __webpack_require__.r(__webpack_exports__);
 
  // import "bootstrap/js/dist/toast";
 
- // import 'bootstrap/js/dist/tooltip';
+ // import 'bootstrap/js/dist/tooltip'
+
+
+var wishlist = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.getStorageItemJSON)("wishlist");
+var cart = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.getStorageItemJSON)("cart");
+var elsWishlistBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)(".js-wishlist");
+var elsCartBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)(".js-cart");
+var elWishlist = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#wishlist");
+var elCartlist = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#cartlist");
+var elHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#main-header");
+document.body.style = "margin-top: ".concat(elHeader.getBoundingClientRect().height, "px");
+elWishlist.addEventListener("click", function (evt) {
+  if (evt.target.matches(".js-delete-wishlistitem")) {
+    console.log("hi");
+    var id = evt.target.getAttribute("data-id");
+    wishlist = wishlist.filter(function (x) {
+      return x.id !== id;
+    });
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.setStorageItem)("wishlist", wishlist);
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.updateButtons)([(0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)(".product-links[data-id=\"".concat(id, "\"] .js-wishlist"))], wishlist, "bi-heart-fill", "bi-heart", "#wishlist");
+  }
+});
+elCartlist.addEventListener("click", function (evt) {
+  if (evt.target.matches(".js-delete-cartlistitem")) {
+    console.log("hi");
+    var id = evt.target.getAttribute("data-id");
+    cart = cart.filter(function (x) {
+      return x.id !== id;
+    });
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.setStorageItem)("cart", cart);
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.updateButtons)([(0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)(".product-links[data-id=\"".concat(id, "\"] .js-cart"))], cart, "bi-bag-check-fill", "bi-bag", "#cartlist");
+  }
+
+  if (evt.target.matches(".js-cart-quantity")) {
+    var _id = evt.target.getAttribute("data-id");
+
+    var isIncrementButton = evt.target.matches(".js-increment");
+    cart = cart.map(function (x) {
+      if (x.id === _id) {
+        if (isIncrementButton) {
+          x.quantity++;
+        } else {
+          x.quantity !== 1 && x.quantity--;
+        }
+      }
+
+      return x;
+    });
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.setStorageItem)("cart", cart);
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.updateButtons)([(0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)(".product-links[data-id=\"".concat(_id, "\"] .js-cart"))], cart, "bi-bag-check-fill", "bi-bag", "#cartlist");
+  }
+});
+(0,_functions__WEBPACK_IMPORTED_MODULE_8__.updateButtons)(elsWishlistBtn, wishlist, "bi-heart-fill", "bi-heart", "#wishlist");
+elsWishlistBtn === null || elsWishlistBtn === void 0 ? void 0 : elsWishlistBtn.forEach(function (el) {
+  el.addEventListener("click", function () {
+    var product = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.getProductData)(el);
+    console.log(product);
+
+    if (!el.classList.contains("clicked")) {
+      wishlist.push(product);
+    } else {
+      wishlist = wishlist.filter(function (x) {
+        return x.id !== product.id;
+      });
+    }
+
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.setStorageItem)("wishlist", wishlist);
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.updateButtons)([el], wishlist, "bi-heart-fill", "bi-heart", "#wishlist");
+  });
+});
+(0,_functions__WEBPACK_IMPORTED_MODULE_8__.updateButtons)(elsCartBtn, cart, "bi-bag-check-fill", "bi-bag", "#cartlist");
+elsCartBtn === null || elsCartBtn === void 0 ? void 0 : elsCartBtn.forEach(function (el) {
+  el.addEventListener("click", function () {
+    var product = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.getProductData)(el);
+    console.log(product);
+
+    if (!el.classList.contains("clicked")) {
+      cart.push(product);
+    } else {
+      cart = cart.filter(function (x) {
+        return x.id !== product.id;
+      });
+    }
+
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.setStorageItem)("cart", cart);
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.updateButtons)([el], cart, "bi-bag-check-fill", "bi-bag", "#cartlist");
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/functions.js":
+/*!***********************************!*\
+  !*** ./resources/js/functions.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "$": () => (/* binding */ $),
+/* harmony export */   "$$": () => (/* binding */ $$),
+/* harmony export */   "getStorageItemJSON": () => (/* binding */ getStorageItemJSON),
+/* harmony export */   "setStorageItem": () => (/* binding */ setStorageItem),
+/* harmony export */   "updateButtons": () => (/* binding */ updateButtons),
+/* harmony export */   "getProductData": () => (/* binding */ getProductData)
+/* harmony export */ });
+function $(selector) {
+  return document.querySelector(selector);
+}
+function $$(selector) {
+  return document.querySelectorAll(selector);
+}
+function getStorageItemJSON(key) {
+  var item = localStorage.getItem(key);
+
+  if (!item) {
+    localStorage.setItem(key, JSON.stringify([]));
+    return JSON.parse(localStorage.getItem(key));
+  } else {
+    return JSON.parse(item);
+  }
+}
+function setStorageItem(key, value) {
+  localStorage.removeItem(key);
+  localStorage.setItem(key, JSON.stringify(value));
+}
+function updateButtons(els, list, className, classNameToBeRemoved, target) {
+  els.forEach(function (el) {
+    var product = getProductData(el);
+    var isLiked = list.find(function (x) {
+      return product.id === x.id;
+    });
+
+    if (!isLiked) {
+      el.classList.remove("clicked");
+      el.firstElementChild.classList.remove(className);
+      el.firstElementChild.classList.add(classNameToBeRemoved);
+    } else {
+      el.classList.add("clicked");
+      el.firstElementChild.classList.add(className);
+      el.firstElementChild.classList.remove(classNameToBeRemoved);
+    }
+  });
+  $(".badge[data-bs-target=\"".concat(target, "\"]")).textContent = list.length;
+
+  switch (target) {
+    case "#wishlist":
+      $("".concat(target, " .list-group")).innerHTML = generateWishlistHTML(list);
+      break;
+
+    case "#cartlist":
+      $("".concat(target, " .list-group")).innerHTML = generateCartHTML(list);
+      $(".js-cart-total").textContent = formatCurrency(list.reduce(function (a, b) {
+        return a + b.quantity * b.price;
+      }, 0));
+      break;
+
+    default:
+      break;
+  }
+}
+function getProductData(targetButton, quantity) {
+  var elDataTag = targetButton.parentElement.parentElement;
+
+  if (!targetButton || !elDataTag) {
+    return;
+  }
+
+  return {
+    id: elDataTag.getAttribute("data-id"),
+    name: elDataTag.getAttribute("data-name"),
+    description: elDataTag.getAttribute("data-description"),
+    price: elDataTag.getAttribute("data-price"),
+    images: elDataTag.getAttribute("data-images").split(","),
+    quantity: quantity || 1
+  };
+}
+
+function generateWishlistHTML(list) {
+  var html = "";
+  list.forEach(function (x) {
+    html += "<li class=\"list-group-item position-relative\">\n\t\t<button type=\"button\" data-id=\"".concat(x.id, "\" class=\"button-small js-delete-wishlistitem rounded-circle shadow-sm position-absolute top-1 end-0 btn btn-danger btn-sm\">\n\t\t\t<i data-id=\"").concat(x.id, "\" class=\"bi bi-trash js-delete-wishlistitem \"></i>\n\t\t</button>\n\t\t<div class=\"d-flex\">\n\t\t\t<div class=\"flex-shrink-0\">\n\t\t\t\t<img src=\"").concat(x.images[0], "\" alt=\"").concat(x.name, "\" class=\"img-thumbnail square-75\">\n\t\t\t</div>\n\t\t\t<div class=\"flex-grow-1 ms-3\">\n\t\t\t\t<a href=\"/product/ad\" class=\"mb-4 text-one-line h6 d-block\">").concat(x.name, "</a>\n\t\t\t\t<div class=\"d-flex align-items-center justify-content-between\">\n\t\t\t\t\t<p class=\"fs-6 mb-0 text-muted\">").concat(formatCurrency(x.price), "</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</li>");
+  });
+  return html;
+}
+
+function generateCartHTML(list) {
+  var html = "";
+  list.forEach(function (x) {
+    html += "<li class=\"list-group-item position-relative\">\n\t\t<button type=\"button\" data-id=\"".concat(x.id, "\" class=\"button-small js-delete-cartlistitem rounded-circle shadow-sm position-absolute top-1 end-0 btn btn-danger btn-sm\">\n\t\t\t<i data-id=\"").concat(x.id, "\" class=\"bi bi-trash js-delete-cartlistitem\"></i>\n\t\t</button>\n\t\t<div class=\"d-flex\">\n\t\t\t<div class=\"flex-shrink-0\">\n\t\t\t\t<img src=\"").concat(x.images[0], "\" alt=\"").concat(x.name, "\" class=\"img-thumbnail square-75\">\n\t\t\t</div>\n\t\t\t<div class=\"flex-grow-1 ms-3\">\n\t\t\t\t<a href=\"/product/ad\" class=\"mb-4 text-one-line h6 d-block\">").concat(x.name, "</a>\n\t\t\t\t<div class=\"d-flex align-items-center justify-content-between\">\n                    <div class=\"btn-group btn-group-sm\">\n                        <button data-id=\"").concat(x.id, "\" type=\"button\" class=\"btn btn-outline-primary py-0 js-cart-quantity js-decrement\">-</button>\n                        <span class=\"btn btn-outline-primary py-0 pe-none\">").concat(x.quantity, "</span>\n                        <button data-id=\"").concat(x.id, "\" type=\"button\" class=\"btn btn-outline-primary py-0 js-cart-quantity js-increment\">+</button>\n                    </div>\n\t\t\t\t\t<p class=\"fs-6 mb-0 text-muted\">").concat(formatCurrency(x.price), "</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</li>");
+  });
+  return html;
+}
+
+function formatCurrency(price) {
+  var _parseInt;
+
+  return "".concat((_parseInt = parseInt(price, 10)) === null || _parseInt === void 0 ? void 0 : _parseInt.toFixed(2), " $");
+}
 
 /***/ }),
 
