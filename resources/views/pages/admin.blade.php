@@ -1,7 +1,18 @@
 @extends('layouts.admin')
 
 @section('content')
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, dolores? Iure debitis possimus, soluta impedit
-  perferendis ipsa adipisci rerum cupiditate accusantium perspiciatis laborum facere quidem, natus fugit laboriosam quae.
-  Ex.
+  @switch($slug)
+    @case("banners")
+      @include('pages.admin.banners')
+    @break
+    @case("collections")
+      @include('pages.admin.collections')
+    @break
+    @case("products")
+      @include('pages.admin.products')
+    @break
+    @default
+      @include('pages.admin.banners')
+
+  @endswitch
 @endsection

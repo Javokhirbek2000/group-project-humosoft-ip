@@ -32,8 +32,8 @@ Route::get('/collection/{collection}', function (Collection $collection) {
 })->name("collection");
 
 Route::get('/search', function () {
-	$search = request()->get('search');
-	$results = App\Models\Product::where('name', 'LIKE', '%' . $search. '%')->get();
+    $search = request()->get('search');
+    $results = App\Models\Product::where('name', 'LIKE', '%' . $search. '%')->get();
     return view('pages.search_results', compact('search', 'results'));
 })->name('search');
 
@@ -45,7 +45,12 @@ Route::get('/checkout', function () {
     return view('pages.checkout');
 });
 
+
 //ADMIN
 Route::get('/admin', function () {
     return view('pages.admin');
 });
+
+Route::get('/admin/{slug}', function ($slug) {
+    return view('pages.admin', ['slug' => $slug]);
+})->name('admin-routes');

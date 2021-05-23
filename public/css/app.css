@@ -12213,6 +12213,10 @@ body {
   height: 80vh;
 }
 
+.h-100vh {
+  height: 100vh;
+}
+
 .fs-12px {
   font-size: 12px !important;
 }
@@ -12500,6 +12504,12 @@ body {
   max-height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.custom-table td,
+.custom-table th {
+  text-align: center;
+  vertical-align: middle;
 }
 
 .orders-history thead th {

@@ -1,47 +1,52 @@
 @use "sass:map";
 .square-50 {
-    width: 50px !important;
-    height: 50px !important;
+	width: 50px !important;
+	height: 50px !important;
 }
 
 .square-100 {
-    width: 100px !important;
-    height: 100px !important;
+	width: 100px !important;
+	height: 100px !important;
 }
 
 .square-250 {
-    width: 250px !important;
-    height: 250px !important;
+	width: 250px !important;
+	height: 250px !important;
 }
 
 .h-250px {
-    height: 250px;
+	height: 250px;
 }
 
 .h-350px {
-    height: 350px;
+	height: 350px;
 }
 
 .square-75 {
-    width: 75px !important;
-    height: 75px !important;
+	width: 75px !important;
+	height: 75px !important;
 }
 
 .h-80vh {
-    height: 80vh;
+	height: 80vh;
 }
+
+.h-100vh {
+	height: 100vh;
+}
+
 .fs-12px {
-    font-size: 12px !important;
+	font-size: 12px !important;
 }
 
 @media screen and (min-width: map.get($grid-breakpoints, "lg")) {
-    .w-lg-auto {
-        width: auto !important;
-    }
+	.w-lg-auto {
+		width: auto !important;
+	}
 }
 
 @media screen and (min-width: map.get($grid-breakpoints, "md")) {
-    .w-md-50 {
-        width: 50% !important;
-    }
+	.w-md-50 {
+		width: 50% !important;
+	}
 }
