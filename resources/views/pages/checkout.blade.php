@@ -6,7 +6,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-md-12">
+        <div class="col-lg-6 col-md-12 cartlist">
           <ul class="list-group list-group-flush overflow-auto custom-scrollbar" id="checkout-list">
             <h1 class="p-5 fs-5">You don't have any products to checkout</h1>
           </ul>

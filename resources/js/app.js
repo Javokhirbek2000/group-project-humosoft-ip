@@ -27,7 +27,7 @@ let cart = getStorageItemJSON("cart");
 const elsWishlistBtn = $$(".js-wishlist");
 const elsCartBtn = $$(".js-cart");
 const elWishlist = $("#wishlist");
-const elCartlist = $("#cartlist");
+const elsCartlist = $$(".cartlist");
 const elsClipboard = $$(".js-clipboard");
 
 const elHeader = $("#main-header");
@@ -59,42 +59,44 @@ elWishlist.addEventListener("click", (evt) => {
 	}
 });
 
-elCartlist.addEventListener("click", (evt) => {
-	if (evt.target.matches(".js-delete-cartlistitem")) {
-		console.log("hi");
-		const id = evt.target.getAttribute("data-id");
-		cart = cart.filter((x) => x.id !== id);
-		setStorageItem("cart", cart);
-		updateButtons(
-			[$(`.product-links[data-id="${id}"] .js-cart`)],
-			cart,
-			"bi-bag-check-fill",
-			"bi-bag",
-			"#cartlist"
-		);
-	}
-	if (evt.target.matches(".js-cart-quantity")) {
-		const id = evt.target.getAttribute("data-id");
-		const isIncrementButton = evt.target.matches(".js-increment");
-		cart = cart.map((x) => {
-			if (x.id === id) {
-				if (isIncrementButton) {
-					x.quantity++;
-				} else {
-					x.quantity !== 1 && x.quantity--;
+elsCartlist.forEach((el) => {
+	el.addEventListener("click", (evt) => {
+		if (evt.target.matches(".js-delete-cartlistitem")) {
+			console.log("hi");
+			const id = evt.target.getAttribute("data-id");
+			cart = cart.filter((x) => x.id !== id);
+			setStorageItem("cart", cart);
+			updateButtons(
+				[$(`.product-links[data-id="${id}"] .js-cart`)],
+				cart,
+				"bi-bag-check-fill",
+				"bi-bag",
+				"#cartlist"
+			);
+		}
+		if (evt.target.matches(".js-cart-quantity")) {
+			const id = evt.target.getAttribute("data-id");
+			const isIncrementButton = evt.target.matches(".js-increment");
+			cart = cart.map((x) => {
+				if (x.id === id) {
+					if (isIncrementButton) {
+						x.quantity++;
+					} else {
+						x.quantity !== 1 && x.quantity--;
+					}
 				}
-			}
-			return x;
-		});
-		setStorageItem("cart", cart);
-		updateButtons(
-			[$(`.product-links[data-id="${id}"] .js-cart`)],
-			cart,
-			"bi-bag-check-fill",
-			"bi-bag",
-			"#cartlist"
-		);
-	}
+				return x;
+			});
+			setStorageItem("cart", cart);
+			updateButtons(
+				[$(`.product-links[data-id="${id}"] .js-cart`)],
+				cart,
+				"bi-bag-check-fill",
+				"bi-bag",
+				"#cartlist"
+			);
+		}
+	});
 });
 
 updateButtons(
