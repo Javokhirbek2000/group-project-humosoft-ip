@@ -36,7 +36,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-12 text-center" data-id="{{ $product->id }}" data-name="{{ $product->name }}"
+        <div class="text-center" data-id="{{ $product->id }}" data-name="{{ $product->name }}"
           data-price="{{ $product->price }}" data-available="{{ $product->available }}"
           data-description="{{ $product->description }}" data-images="{{ $product->imagesComma() }}">
           <mark class="text-muted font-monospace">{{ $product->brand }}</mark>
