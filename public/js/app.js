@@ -3149,11 +3149,11 @@ var elsWishlistBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)(".js-wishlis
 var elsCartBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)(".js-cart");
 var elWishlist = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#wishlist");
 var elCartlist = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#cartlist");
-var elsClipboard = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)('.js-clipboard');
+var elsClipboard = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)(".js-clipboard");
 var elHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#main-header");
 document.body.style = "margin-top: ".concat(elHeader.getBoundingClientRect().height, "px");
 elsClipboard === null || elsClipboard === void 0 ? void 0 : elsClipboard.forEach(function (el) {
-  el.addEventListener('click', function () {
+  el.addEventListener("click", function () {
     var input = el.nextElementSibling;
     (0,_functions__WEBPACK_IMPORTED_MODULE_8__.copyToClipBoard)(input);
   });
