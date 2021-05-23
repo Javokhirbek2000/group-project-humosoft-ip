@@ -46,8 +46,8 @@
     </div>
   </div>
   <div class="p-2 bg-white shadow-sm collapse w-100" id="searchbar">
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <form action="{{ route('search') }}" class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
   </div>
