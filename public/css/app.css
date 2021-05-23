@@ -12330,7 +12330,15 @@ body {
 
 .product-item .product-image {
   position: relative;
-  max-height: 400px;
+  height: 300px;
+}
+.product-item .product-image a {
+  height: 100%;
+}
+.product-item .product-image a img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .product-item .product-image a.image {
@@ -12451,7 +12459,7 @@ body {
   font-weight: 300;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .product-item .product-links {
     opacity: 1;
     transform: translateX(-50%) scale(1);

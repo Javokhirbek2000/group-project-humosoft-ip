@@ -15,14 +15,14 @@ class BannerSeeder extends Seeder
      */
     public function run()
     {
-    	$faker = Faker::create();
-    	foreach (range(1, 5) as $index) {
-    		DB::table('banners')->insert([
-	            'name' => $faker->sentence(),
-	            'description' => $faker->sentence(),
-	            'url' => $faker->url(),
-	        ]);
-    	}
-        
+        $faker = Faker::create();
+        foreach (range(1, 5) as $index) {
+            DB::table('banners')->insert([
+                'name' => $faker->sentence(),
+                'description' => $faker->sentence(),
+                'url' => $faker->url(),
+                'image' => "https://picsum.photos/id/{$faker->numberBetween(700, 800)}/1900/600"
+            ]);
+        }
     }
 }

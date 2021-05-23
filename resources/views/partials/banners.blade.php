@@ -9,11 +9,10 @@
   </div>
   <div class="carousel-inner">
     @foreach (App\Models\Banner::all() as $i => $banner)
-      <div class="carousel-item  {{ $i == 0 ? 'active' : '' }}  ">
+      <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
 
         <div class="img-mask h-80vh"></div>
-        <img src="https://picsum.photos/id/{{ $i }}/1200/500" class="d-block w-100 h-80vh object-fit-cover"
-          alt="...">
+        <img src="{{ $banner->image }}" class="d-block w-100 h-80vh object-fit-cover" alt="{{ $banner->name }}">
 
         <div class="carousel-caption d-block z-index-2 top-50 start-50 translate-middle w-75">
           <h4 class="text-uppercase">{{ $banner->name }}</h4>

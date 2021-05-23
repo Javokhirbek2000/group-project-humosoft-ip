@@ -36,7 +36,7 @@ class Initial extends Migration
 
             $table->string('name');
             $table->text('description');
-            $table->json('images')->nullable();
+            $table->text('images')->nullable();
             $table->string('brand');
             $table->float('price', 8, 2);
 
@@ -60,6 +60,7 @@ class Initial extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('url');
+            $table->string('image');
             $table->timestamps();
         });
     }

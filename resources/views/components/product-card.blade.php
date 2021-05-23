@@ -5,6 +5,10 @@
         @if (count($images) > 0)
           <img class="pic-1" src="{{ $images[0] }}">
           <img class="pic-2" src="{{ $images[count($images) - 1] }}">
+        @else {
+          <img class="pic-1" src="{{ assets('img/noimg.png') }}">
+          <img class="pic-2" src="{{ assets('img/noimg.png') }}">
+          }
         @endif
       </a>
       <ul class="product-links" data-id="{{ $product->id }}" data-name="{{ $product->name }}"

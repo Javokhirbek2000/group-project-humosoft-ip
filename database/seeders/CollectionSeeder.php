@@ -15,13 +15,13 @@ class CollectionSeeder extends Seeder
      */
     public function run()
     {
-    	$faker = Faker::create();
-    	foreach (range(1, 5) as $index) {
-    		DB::table('collections')->insert([
-	            'name' => $faker->word(),
-	            'is_featured' => true,
-	        ]);
-    	}
-        
+        $faker = Faker::create();
+        foreach (range(1, 10) as $index) {
+            DB::table('collections')->insert([
+                'name' => $faker->word(),
+                'is_featured' => $faker->numberBetween(0, 1),
+                'image' => "https://picsum.photos/id/{$faker->numberBetween(600, 700)}/600/600"
+            ]);
+        }
     }
 }
