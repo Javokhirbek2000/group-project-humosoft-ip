@@ -96,14 +96,11 @@ of application easily</p>
             </div>
             <div class="col-lg-6 mb-5 mb-lg-8">
               <h3 class="font-size-18 text-gray-39 mb-4">History of the Company</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum autem repellendus ipsa. At maxime, velit
-                amet, ex deleniti commodi a officiis nobis ullam sint tempore unde! Veritatis quos enim repellendus!</p>
+              <p>We see the problem that people need online shopping because it is more convinent than traditonal one.</p>
             </div>
             <div class="col-lg-6 mb-5 mb-lg-8">
               <h3 class="font-size-18 text-gray-39 mb-4">Cooperate with Us!</h3>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, atque. Eum, harum necessitatibus.
-                Recusandae deserunt nemo suscipit quidem! Minus, exercitationem beatae. Id quisquam voluptatem excepturi
-                cupiditate nihil dolores perspiciatis obcaecati?</p>
+              <p>You can cooperate with us for more detailed informations </p>
             </div>
           </div>
         </div>
@@ -130,9 +127,7 @@ of application easily</p>
                 <div id="basicsCollapseOnee" class="collapse show" aria-labelledby="basicsHeadingOne"
                   data-parent="#basicsAccordion1">
                   <div class="card-body">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi labore eum porro quam
-                      necessitatibus corrupti hic beatae! In deserunt hic tenetur exercitationem, illo consectetur
-                      doloremque vel ad porro dignissimos facere?</p>
+                    <p class="mb-0"> We have best service that you have ever imagined.You can contact us any time you want </p>
                   </div>
                 </div>
               </div>
@@ -153,9 +148,7 @@ of application easily</p>
                 <div id="basicsCollapseTwo" class="collapse" aria-labelledby="basicsHeadingTwo"
                   data-parent="#basicsAccordion1">
                   <div class="card-body">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum perspiciatis numquam
-                      voluptatibus vero labore, dolores nam? Vitae ea culpa corrupti id, aliquam sed temporibus officiis
-                      libero ex voluptate nostrum doloremque.</p>
+                    <p class="mb-0">The quality of product is quite great. You can check out in website</p>
                   </div>
                 </div>
               </div>
@@ -177,9 +170,7 @@ of application easily</p>
                 <div id="basicsCollapseThree" class="collapse" aria-labelledby="basicsHeadingThree"
                   data-parent="#basicsAccordion1">
                   <div class="card-body">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem hic, assumenda modi
-                      blanditiis aliquam officia ipsa cumque. Perferendis iusto voluptatibus mollitia tempore repellat
-                      numquam nostrum architecto quibusdam atque. Error, veritatis.</p>
+                    <p class="mb-0">The fastest delivery in short time    </p>
                   </div>
                 </div>
               </div>
@@ -201,9 +192,7 @@ of application easily</p>
                 <div id="basicsCollapseFour" class="collapse" aria-labelledby="basicsHeadingFour"
                   data-parent="#basicsAccordion1">
                   <div class="card-body">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure laudantium esse
-                      recusandae ullam architecto similique tempore ad aspernatur officiis quae unde dolorum tempora sequi
-                      et nobis, quasi, earum vel. Quas.</p>
+                    <p class="mb-0">We care about our customers. We want our customers the best user experience that they have ever imagined</p>
                   </div>
                 </div>
               </div>
@@ -225,9 +214,7 @@ of application easily</p>
                 <div id="basicsCollapseFive" class="collapse" aria-labelledby="basicsHeadingFive"
                   data-parent="#basicsAccordion1">
                   <div class="card-body">
-                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, alias, laborum
-                      dolor eligendi excepturi enim modi unde sit cum est fuga sequi tenetur quibusdam vitae earum quidem,
-                      nulla harum? Nostrum!</p>
+                    <p class="mb-0"> Because of services we provide is high quality, Customer satisfaction is better than we have expected. </p>
                   </div>
                 </div>
               </div>
