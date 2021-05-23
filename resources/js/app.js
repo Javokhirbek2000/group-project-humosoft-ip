@@ -80,7 +80,7 @@ elsCartlist.forEach((el) => {
 			cart = cart.map((x) => {
 				if (x.id === id) {
 					if (isIncrementButton) {
-						x.quantity++;
+						x.available !== x.quantity && x.quantity++;
 					} else {
 						x.quantity !== 1 && x.quantity--;
 					}
@@ -124,11 +124,18 @@ updateButtons(elsCartBtn, cart, "bi-bag-check-fill", "bi-bag", "#cartlist");
 elsCartBtn?.forEach((el) => {
 	el.addEventListener("click", () => {
 		const product = getProductData(el);
-		console.log(product);
+		const addedText = el.getAttribute("data-added");
+		const defaultText = el.getAttribute("data-default");
 		if (!el.classList.contains("clicked")) {
 			cart.push(product);
+			if (addedText) {
+				el.innerText = addedText;
+			}
 		} else {
 			cart = cart.filter((x) => x.id !== product.id);
+			if (addedText) {
+				el.innerText = defaultText;
+			}
 		}
 		setStorageItem("cart", cart);
 		updateButtons([el], cart, "bi-bag-check-fill", "bi-bag", "#cartlist");

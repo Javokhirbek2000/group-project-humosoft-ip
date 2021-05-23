@@ -3188,7 +3188,7 @@ elsCartlist.forEach(function (el) {
       cart = cart.map(function (x) {
         if (x.id === _id) {
           if (isIncrementButton) {
-            x.quantity++;
+            x.available !== x.quantity && x.quantity++;
           } else {
             x.quantity !== 1 && x.quantity--;
           }
@@ -3223,14 +3223,23 @@ elsWishlistBtn === null || elsWishlistBtn === void 0 ? void 0 : elsWishlistBtn.f
 elsCartBtn === null || elsCartBtn === void 0 ? void 0 : elsCartBtn.forEach(function (el) {
   el.addEventListener("click", function () {
     var product = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.getProductData)(el);
-    console.log(product);
+    var addedText = el.getAttribute("data-added");
+    var defaultText = el.getAttribute("data-default");
 
     if (!el.classList.contains("clicked")) {
       cart.push(product);
+
+      if (addedText) {
+        el.innerText = addedText;
+      }
     } else {
       cart = cart.filter(function (x) {
         return x.id !== product.id;
       });
+
+      if (addedText) {
+        el.innerText = defaultText;
+      }
     }
 
     (0,_functions__WEBPACK_IMPORTED_MODULE_8__.setStorageItem)("cart", cart);
@@ -3286,15 +3295,31 @@ function updateButtons(els, list, className, classNameToBeRemoved, target) {
     var isLiked = list.find(function (x) {
       return product.id === x.id;
     });
+    var addedText = el.getAttribute("data-added");
+    var defaultText = el.getAttribute("data-default");
 
     if (!isLiked) {
+      var _el$firstElementChild, _el$firstElementChild2;
+
       el.classList.remove("clicked");
-      el.firstElementChild.classList.remove(className);
-      el.firstElementChild.classList.add(classNameToBeRemoved);
+
+      if (addedText) {
+        el.innerText = defaultText;
+      }
+
+      (_el$firstElementChild = el.firstElementChild) === null || _el$firstElementChild === void 0 ? void 0 : _el$firstElementChild.classList.remove(className);
+      (_el$firstElementChild2 = el.firstElementChild) === null || _el$firstElementChild2 === void 0 ? void 0 : _el$firstElementChild2.classList.add(classNameToBeRemoved);
     } else {
+      var _el$firstElementChild3, _el$firstElementChild4;
+
       el.classList.add("clicked");
-      el.firstElementChild.classList.add(className);
-      el.firstElementChild.classList.remove(classNameToBeRemoved);
+
+      if (addedText) {
+        el.innerText = addedText;
+      }
+
+      (_el$firstElementChild3 = el.firstElementChild) === null || _el$firstElementChild3 === void 0 ? void 0 : _el$firstElementChild3.classList.add(className);
+      (_el$firstElementChild4 = el.firstElementChild) === null || _el$firstElementChild4 === void 0 ? void 0 : _el$firstElementChild4.classList.remove(classNameToBeRemoved);
     }
   });
   $(".badge[data-bs-target=\"".concat(target, "\"]")).textContent = list.length;
@@ -3337,7 +3362,8 @@ function getProductData(targetButton, quantity) {
     description: elDataTag.getAttribute("data-description"),
     price: elDataTag.getAttribute("data-price"),
     images: elDataTag.getAttribute("data-images").split(","),
-    quantity: quantity || 1
+    quantity: quantity || 1,
+    available: parseInt(elDataTag.getAttribute("data-available"))
   };
 } // export function setProductData(targetButton, ) {
 //     const elDataTag = targetButton.parentElement.parentElement;
@@ -3362,7 +3388,7 @@ function generateWishlistHTML(list) {
 function generateCartHTML(list) {
   var html = "";
   list.forEach(function (x) {
-    html += "<li class=\"list-group-item position-relative\">\n\t\t<button type=\"button\" data-id=\"".concat(x.id, "\" class=\"button-small js-delete-cartlistitem rounded-circle shadow-sm position-absolute top-1 end-0 btn btn-danger btn-sm\">\n\t\t\t<i data-id=\"").concat(x.id, "\" class=\"bi bi-trash js-delete-cartlistitem\"></i>\n\t\t</button>\n\t\t<div class=\"d-flex\">\n\t\t\t<div class=\"flex-shrink-0\">\n\t\t\t\t<img src=\"").concat(x.images[0], "\" alt=\"").concat(x.name, "\" class=\"img-thumbnail square-75\">\n\t\t\t</div>\n\t\t\t<div class=\"flex-grow-1 ms-3\">\n\t\t\t\t<a href=\"/product/ad\" class=\"mb-4 text-one-line h6 d-block\">").concat(x.name, "</a>\n\t\t\t\t<div class=\"d-flex align-items-center justify-content-between\">\n                    <div class=\"btn-group btn-group-sm\">\n                        <button data-id=\"").concat(x.id, "\" type=\"button\" class=\"btn btn-outline-primary py-0 js-cart-quantity js-decrement\">-</button>\n                        <span class=\"btn btn-outline-primary py-0 pe-none\">").concat(x.quantity, "</span>\n                        <button data-id=\"").concat(x.id, "\" type=\"button\" class=\"btn btn-outline-primary py-0 js-cart-quantity js-increment\">+</button>\n                    </div>\n\t\t\t\t\t<p class=\"fs-6 mb-0 text-muted\">").concat(formatCurrency(x.price), "</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</li>");
+    html += "<li class=\"list-group-item position-relative\">\n\t\t<button type=\"button\" data-id=\"".concat(x.id, "\" class=\"button-small js-delete-cartlistitem rounded-circle shadow-sm position-absolute top-1 end-0 btn btn-danger btn-sm\">\n\t\t\t<i data-id=\"").concat(x.id, "\" class=\"bi bi-trash js-delete-cartlistitem\"></i>\n\t\t</button>\n\t\t<div class=\"d-flex\">\n\t\t\t<div class=\"flex-shrink-0\">\n\t\t\t\t<img src=\"").concat(x.images[0], "\" alt=\"").concat(x.name, "\" class=\"img-thumbnail square-75\">\n\t\t\t</div>\n\t\t\t<div class=\"flex-grow-1 ms-3\">\n\t\t\t\t<a href=\"/product/ad\" class=\"mb-4 text-one-line h6 d-block\">").concat(x.name, "</a>\n\t\t\t\t<div class=\"d-flex align-items-center justify-content-between\">\n\t\t\t\t\t<div class=\"btn-group btn-group-sm\">\n\t\t\t\t\t\t\t<button data-id=\"").concat(x.id, "\" type=\"button\" class=\"btn btn-outline-primary py-0 js-cart-quantity js-decrement\">-</button>\n\t\t\t\t\t\t\t<span class=\"btn btn-outline-primary py-0 pe-none\">").concat(x.quantity, "</span>\n\t\t\t\t\t\t\t<button data-id=\"").concat(x.id, "\" type=\"button\" class=\"btn btn-outline-primary py-0 js-cart-quantity js-increment\">+</button>\n\t\t\t\t\t</div>\n\t\t\t\t\t<p class=\"fs-6 mb-0 text-muted\">").concat(formatCurrency(x.price), "</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</li>");
   });
   return html;
 }

@@ -39,14 +39,23 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-12 text-center">
+        <div class="col-lg-6 col-md-12 text-center" data-id="90" data-name="Women's Shirt Top" data-price="78.90"
+          data-available="10"
+          data-description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero facilis non culpa expedita debitis ipsam assumenda aut id nemo ab?"
+          data-images="https://picsum.photos/id/237/300/300,https://picsum.photos/id/238/300/300,https://picsum.photos/id/239/300/300">
           <mark class="text-muted font-monospace">Adidas</mark>
           <h1>Dress</h1>
           <div>
             <div class="border-bottom border-primary fw-light fs-2 my-3 d-inline-block">$139.99</div>
           </div>
-          <button class="btn-primary btn-lg btn text-uppercase my-5">add to cart</button>
-          <button class="btn-outline-secondary btn-lg btn text-uppercase my-5">add to favorites</button>
+          <div class="text-success">Quantity in Stock: 7</div>
+          <div class="my-5">
+            <button type="button" class="js-cart btn-primary btn-lg btn text-uppercase mb-3" data-added="Added to cart"
+              data-default="add to cart">add to cart</button>
+            <button type="button" class="btn-outline-secondary btn-lg btn text-uppercase mb-3 js-wishlist"
+              data-added="Added to favorites" data-default="Add to favorites">add to
+              favorites</button>
+          </div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam obcaecati ea nisi alias, est blanditiis qui
             officia sit doloribus culpa, amet aliquid odit? Velit quia quaerat nisi minima. Illo ad dolor quasi maxime

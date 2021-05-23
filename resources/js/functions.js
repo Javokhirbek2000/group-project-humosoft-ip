@@ -35,14 +35,22 @@ export function updateButtons(
 		const product = getProductData(el);
 		if (!product) return;
 		const isLiked = list.find((x) => product.id === x.id);
+		const addedText = el.getAttribute("data-added");
+		const defaultText = el.getAttribute("data-default");
 		if (!isLiked) {
 			el.classList.remove("clicked");
-			el.firstElementChild.classList.remove(className);
-			el.firstElementChild.classList.add(classNameToBeRemoved);
+			if (addedText) {
+				el.innerText = defaultText;
+			}
+			el.firstElementChild?.classList.remove(className);
+			el.firstElementChild?.classList.add(classNameToBeRemoved);
 		} else {
 			el.classList.add("clicked");
-			el.firstElementChild.classList.add(className);
-			el.firstElementChild.classList.remove(classNameToBeRemoved);
+			if (addedText) {
+				el.innerText = addedText;
+			}
+			el.firstElementChild?.classList.add(className);
+			el.firstElementChild?.classList.remove(classNameToBeRemoved);
 		}
 	});
 	$(`.badge[data-bs-target="${target}"]`).textContent = list.length;
@@ -83,6 +91,7 @@ export function getProductData(targetButton, quantity) {
 		price: elDataTag.getAttribute("data-price"),
 		images: elDataTag.getAttribute("data-images").split(","),
 		quantity: quantity || 1,
+		available: parseInt(elDataTag.getAttribute("data-available")),
 	};
 }
 
@@ -140,17 +149,15 @@ function generateCartHTML(list) {
 			<div class="flex-grow-1 ms-3">
 				<a href="/product/ad" class="mb-4 text-one-line h6 d-block">${x.name}</a>
 				<div class="d-flex align-items-center justify-content-between">
-                    <div class="btn-group btn-group-sm">
-                        <button data-id="${
-													x.id
-												}" type="button" class="btn btn-outline-primary py-0 js-cart-quantity js-decrement">-</button>
-                        <span class="btn btn-outline-primary py-0 pe-none">${
-													x.quantity
-												}</span>
-                        <button data-id="${
-													x.id
-												}" type="button" class="btn btn-outline-primary py-0 js-cart-quantity js-increment">+</button>
-                    </div>
+					<div class="btn-group btn-group-sm">
+							<button data-id="${
+								x.id
+							}" type="button" class="btn btn-outline-primary py-0 js-cart-quantity js-decrement">-</button>
+							<span class="btn btn-outline-primary py-0 pe-none">${x.quantity}</span>
+							<button data-id="${
+								x.id
+							}" type="button" class="btn btn-outline-primary py-0 js-cart-quantity js-increment">+</button>
+					</div>
 					<p class="fs-6 mb-0 text-muted">${formatCurrency(x.price)}</p>
 				</div>
 			</div>
