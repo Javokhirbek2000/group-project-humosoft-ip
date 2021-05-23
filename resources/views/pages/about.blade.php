@@ -74,7 +74,7 @@
           <div class="col-md-4 mb-5 mb-xl-0 col-xl-3 col-sm-6 text-center team-member">
             <img class="img-fluid mb-3 rounded-circle" src="img/komiljon.jpg" alt="Card image cap">
             <h2 class="fs-4 mb-0">Yangiboev Komiljon</h2>
-            <span class="text-gray-41">Web Developer</span>
+            <span class="text-gray-41">Python Developer</span>
           </div>
         </div>
       </div>
