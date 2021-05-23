@@ -12222,6 +12222,11 @@ body {
     width: auto !important;
   }
 }
+@media screen and (min-width: 768px) {
+  .w-md-50 {
+    width: 50% !important;
+  }
+}
 .text-one-line {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -12325,7 +12330,15 @@ body {
 
 .product-item .product-image {
   position: relative;
-  max-height: 400px;
+  height: 300px;
+}
+.product-item .product-image a {
+  height: 100%;
+}
+.product-item .product-image a img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .product-item .product-image a.image {
@@ -12446,7 +12459,7 @@ body {
   font-weight: 300;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   .product-item .product-links {
     opacity: 1;
     transform: translateX(-50%) scale(1);
@@ -12487,4 +12500,62 @@ body {
   max-height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.orders-history thead th {
+  padding: 20px 0;
+  font-size: 16px;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #212529;
+}
+.orders-history th,
+.orders-history td {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 16px;
+}
+.orders-history th a,
+.orders-history td a {
+  color: black;
+}
+.orders-history .products-ordered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.orders-history .products-ordered a {
+  display: flex;
+  width: 50px;
+  height: 50px;
+}
+.orders-history .products-ordered a img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.orders-history .orders-details thead th {
+  padding: 10px 0;
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #212529;
+}
+.orders-history .orders-details td {
+  font-size: 14px;
+}
+.orders-history .orders-details a {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: start;
+}
+.orders-history .orders-details a img {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 10px;
 }

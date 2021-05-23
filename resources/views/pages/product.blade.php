@@ -15,16 +15,13 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                   aria-label="Slide 3"></button>
               </div>
+
               <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="https://picsum.photos/300/300" class="d-block w-100" alt="Okay">
-                </div>
-                <div class="carousel-item">
-                  <img src="https://picsum.photos/300/300" class="d-block w-100" alt="Okay">
-                </div>
-                <div class="carousel-item">
-                  <img src="https://picsum.photos/300/300" class="d-block w-100" alt="Okay">
-                </div>
+                @foreach ($product->imagesList() as $i => $image_url)
+                  <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
+                    <img src="{{ $image_url }}" class="d-block w-100" alt="Okay">
+                  </div>
+                @endforeach
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
@@ -39,19 +36,26 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-12 text-center">
-          <mark class="text-muted font-monospace">Adidas</mark>
-          <h1>Dress</h1>
+        <div class="text-center" data-id="{{ $product->id }}" data-name="{{ $product->name }}"
+          data-price="{{ $product->price }}" data-available="{{ $product->available }}"
+          data-description="{{ $product->description }}" data-images="{{ $product->imagesComma() }}">
+          <mark class="text-muted font-monospace">{{ $product->brand }}</mark>
+          <h1>{{ $product->name }}</h1>
           <div>
-            <div class="border-bottom border-primary fw-light fs-2 my-3 d-inline-block">$139.99</div>
+            <div class="border-bottom border-primary fw-light fs-2 my-3 d-inline-block">${{ $product->price }}</div>
           </div>
-          <button class="btn-primary btn-lg btn text-uppercase my-5">add to cart</button>
-          <button class="btn-outline-secondary btn-lg btn text-uppercase my-5">add to favorites</button>
+          <div class="text-success">Quantity in Stock: {{ $product->available }}</div>
+          <div class="my-5">
+            <button {{ $product->available == 0 ? 'disabled' : '' }} type="button"
+              class="js-cart btn-primary btn-lg btn text-uppercase mb-3" data-added="Added to cart"
+              data-default="add to cart"> {{ $product->available == 0 ? 'Unavailable' : 'add to cart' }}add to
+              cart</button>
+            <button type="button" class="btn-outline-secondary btn-lg btn text-uppercase mb-3 js-wishlist"
+              data-added="Added to favorites" data-default="Add to favorites">add to
+              favorites</button>
+          </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam obcaecati ea nisi alias, est blanditiis qui
-            officia sit doloribus culpa, amet aliquid odit? Velit quia quaerat nisi minima. Illo ad dolor quasi maxime
-            aliquam dolores non autem, explicabo quae fugiat veniam! Quae exercitationem ut itaque optio nostrum
-            cupiditate consectetur ducimus?
+            {{ $product->description }}
           </p>
           <div class="d-flex justify-content-center align-items-center">
             <a href="#" class="d-block text-decoration-none mx-2"><i class="bi bi-facebook fs-3"></i></a>
