@@ -91,9 +91,14 @@
 	transition: all 0.3s ease 0s;
 	text-decoration: none;
 }
-.product-item .product-links li button:hover {
-	color: #fff;
-	background: $red;
+.product-item .product-links li {
+	button {
+		&:hover,
+		&.clicked {
+			color: #fff;
+			background: $red;
+		}
+	}
 }
 .product-item .product-content {
 	background-color: #fff;
