@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
     public function imagesList() {
-    	return explode("\n", $this->images);
+    	return json_decode($this->images);
     }
     public function imagesComma() {
     	return implode(",", $this->imagesList());

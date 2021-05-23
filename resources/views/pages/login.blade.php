@@ -22,16 +22,15 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form action="{{ route('login') }}">
               <div class="mb-3">
                 <label for="email-input-page" class="form-label mb-1">Email address</label>
-                <input type="email" class="form-control" autocomplete="email" id="email-input-page" placeholder="Email">
+                <input type="email" class="form-control" autocomplete="email" id="email-input-page" placeholder="Email" name="email">
                 <div id="emailHelp" class="form-text text-muted ">We'll never share your email with anyone else.</div>
               </div>
               <div class="mb-3">
                 <label for="password-input-page" class="form-label mb-1">Password</label>
-                <input type="password" class="form-control" autocomplete="current-password" placeholder="Password"
-                  id="password-input-page">
+                <input type="password" class="form-control" autocomplete="current-password" placeholder="Password" id="password-input-page" name="password">
               </div>
               <button type="submit" class="btn btn-primary  w-100 py-2">SIGN IN</button>
             </form>
@@ -54,21 +53,19 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form action="{{ route('register') }}">
               <div class="mb-3">
                 <label for="name" class="form-label mb-1">Full Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Full Name">
+                <input type="text" class="form-control" id="name" placeholder="Full Name" name="name">
               </div>
               <div class="mb-3">
                 <label for="email-input-page-create" class="form-label mb-1">Email address</label>
-                <input type="email" class="form-control" autocomplete="email" id="email-input-page-create"
-                  placeholder="Email">
+                <input type="email" class="form-control" autocomplete="email" id="email-input-page-create" placeholder="Email" name="email">
                 <div id="emailHelp" class="form-text text-muted ">We'll never share your email with anyone else.</div>
               </div>
               <div class="mb-3">
                 <label for="password-input-page-create" class="form-label mb-1">Password</label>
-                <input type="password" class="form-control" autocomplete="new-password" placeholder="Password"
-                  id="password-input-page-create">
+                <input type="password" class="form-control" autocomplete="new-password" placeholder="Password" id="password-input-page-create" name="password">
               </div>
               <div class="mb-3">
                 <label for="repeat-password-input-page-create" class="form-label mb-1">Re-enter password</label>
