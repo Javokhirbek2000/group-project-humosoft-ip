@@ -21,6 +21,9 @@ export function setStorageItem(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
 
+const elCheckoutList = $("#checkout-list");
+const elCheckoutForm = $("#checkout-form");
+
 export function updateButtons(
     els,
     list,
@@ -47,10 +50,19 @@ export function updateButtons(
             $(`${target} .list-group`).innerHTML = generateWishlistHTML(list);
             break;
         case "#cartlist":
-            $(`${target} .list-group`).innerHTML = generateCartHTML(list);
-            $(".js-cart-total").textContent = formatCurrency(
+            const html = generateCartHTML(list);
+            const totalPrice = formatCurrency(
                 list.reduce((a, b) => a + b.quantity * b.price, 0)
             );
+            $(`${target} .list-group`).innerHTML = html;
+            if (elCheckoutList) {
+                elCheckoutList.innerHTML = html;
+                elCheckoutList.nextElementSibling.lastElementChild.textContent =
+                    totalPrice;
+                elCheckoutForm.innerHTML += generateCheckoutInputs(list);
+            }
+            $(".js-cart-total").textContent = totalPrice;
+
             break;
         default:
             break;
@@ -143,4 +155,13 @@ export function copyToClipBoard(input) {
     input.setSelectionRange(0, 99999);
     document.execCommand("copy");
     console.log("copied");
+}
+
+function generateCheckoutInputs(products) {
+    let html = "";
+    products.forEach((x, i) => {
+        html += `<input type="hidden" name="products[${i}][id]" value="${x.id}">
+        <input type="hidden" name="products[${i}][quantity]" value="${x.quantity}">`;
+    });
+    return html;
 }

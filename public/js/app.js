@@ -3149,11 +3149,11 @@ var elsWishlistBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)(".js-wishlis
 var elsCartBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)(".js-cart");
 var elWishlist = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#wishlist");
 var elCartlist = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#cartlist");
-var elsClipboard = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)('.js-clipboard');
+var elsClipboard = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)(".js-clipboard");
 var elHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#main-header");
 document.body.style = "margin-top: ".concat(elHeader.getBoundingClientRect().height, "px");
 elsClipboard === null || elsClipboard === void 0 ? void 0 : elsClipboard.forEach(function (el) {
-  el.addEventListener('click', function () {
+  el.addEventListener("click", function () {
     var input = el.nextElementSibling;
     (0,_functions__WEBPACK_IMPORTED_MODULE_8__.copyToClipBoard)(input);
   });
@@ -3275,6 +3275,8 @@ function setStorageItem(key, value) {
   localStorage.removeItem(key);
   localStorage.setItem(key, JSON.stringify(value));
 }
+var elCheckoutList = $("#checkout-list");
+var elCheckoutForm = $("#checkout-form");
 function updateButtons(els, list, className, classNameToBeRemoved, target) {
   els.forEach(function (el) {
     var product = getProductData(el);
@@ -3300,10 +3302,19 @@ function updateButtons(els, list, className, classNameToBeRemoved, target) {
       break;
 
     case "#cartlist":
-      $("".concat(target, " .list-group")).innerHTML = generateCartHTML(list);
-      $(".js-cart-total").textContent = formatCurrency(list.reduce(function (a, b) {
+      var html = generateCartHTML(list);
+      var totalPrice = formatCurrency(list.reduce(function (a, b) {
         return a + b.quantity * b.price;
       }, 0));
+      $("".concat(target, " .list-group")).innerHTML = html;
+
+      if (elCheckoutList) {
+        elCheckoutList.innerHTML = html;
+        elCheckoutList.nextElementSibling.lastElementChild.textContent = totalPrice;
+        elCheckoutForm.innerHTML += generateCheckoutInputs(list);
+      }
+
+      $(".js-cart-total").textContent = totalPrice;
       break;
 
     default:
@@ -3354,6 +3365,14 @@ function copyToClipBoard(input) {
   input.setSelectionRange(0, 99999);
   document.execCommand("copy");
   console.log("copied");
+}
+
+function generateCheckoutInputs(products) {
+  var html = "";
+  products.forEach(function (x, i) {
+    html += "<input type=\"hidden\" name=\"products[".concat(i, "][id]\" value=\"").concat(x.id, "\">\n        <input type=\"hidden\" name=\"products[").concat(i, "][quantity]\" value=\"").concat(x.quantity, "\">");
+  });
+  return html;
 }
 
 /***/ }),

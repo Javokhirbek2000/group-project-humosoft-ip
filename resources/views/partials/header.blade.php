@@ -65,9 +65,9 @@
       </ul>
       <div class="d-flex mb-2 justify-content-between align-items-center border-top border-bottom py-2">
         <p class="fs-5 mb-0">TOTAL</p>
-        <p class="fs-6 mb-0 js-cart-total">$500</p>
+        <p class="fs-6 mb-0 js-cart-total">0</p>
       </div>
-      <button class="btn btn-lg btn-primary w-100">CHECKOUT</button>
+      <a href="/checkout" class="btn btn-lg btn-primary w-100">CHECKOUT</a>
     </div>
   </div>
 </div>

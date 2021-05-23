@@ -18,7 +18,7 @@ import {
     updateButtons,
     getStorageItemJSON,
     setStorageItem,
-    copyToClipBoard
+    copyToClipBoard,
 } from "./functions";
 
 let wishlist = getStorageItemJSON("wishlist");
@@ -28,7 +28,7 @@ const elsWishlistBtn = $$(".js-wishlist");
 const elsCartBtn = $$(".js-cart");
 const elWishlist = $("#wishlist");
 const elCartlist = $("#cartlist");
-const elsClipboard = $$('.js-clipboard')
+const elsClipboard = $$(".js-clipboard");
 
 const elHeader = $("#main-header");
 
@@ -36,12 +36,12 @@ document.body.style = `margin-top: ${
     elHeader.getBoundingClientRect().height
 }px`;
 
-elsClipboard?.forEach(el => {
-    el.addEventListener('click', () => {
+elsClipboard?.forEach((el) => {
+    el.addEventListener("click", () => {
         const input = el.nextElementSibling;
-        copyToClipBoard(input)
-    })
-})
+        copyToClipBoard(input);
+    });
+});
 
 elWishlist.addEventListener("click", (evt) => {
     if (evt.target.matches(".js-delete-wishlistitem")) {
