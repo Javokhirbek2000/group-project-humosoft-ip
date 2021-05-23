@@ -3149,8 +3149,15 @@ var elsWishlistBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)(".js-wishlis
 var elsCartBtn = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)(".js-cart");
 var elWishlist = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#wishlist");
 var elCartlist = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#cartlist");
+var elsClipboard = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$$)('.js-clipboard');
 var elHeader = (0,_functions__WEBPACK_IMPORTED_MODULE_8__.$)("#main-header");
 document.body.style = "margin-top: ".concat(elHeader.getBoundingClientRect().height, "px");
+elsClipboard === null || elsClipboard === void 0 ? void 0 : elsClipboard.forEach(function (el) {
+  el.addEventListener('click', function () {
+    var input = el.nextElementSibling;
+    (0,_functions__WEBPACK_IMPORTED_MODULE_8__.copyToClipBoard)(input);
+  });
+});
 elWishlist.addEventListener("click", function (evt) {
   if (evt.target.matches(".js-delete-wishlistitem")) {
     console.log("hi");
@@ -3245,7 +3252,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getStorageItemJSON": () => (/* binding */ getStorageItemJSON),
 /* harmony export */   "setStorageItem": () => (/* binding */ setStorageItem),
 /* harmony export */   "updateButtons": () => (/* binding */ updateButtons),
-/* harmony export */   "getProductData": () => (/* binding */ getProductData)
+/* harmony export */   "getProductData": () => (/* binding */ getProductData),
+/* harmony export */   "copyToClipBoard": () => (/* binding */ copyToClipBoard)
 /* harmony export */ });
 function $(selector) {
   return document.querySelector(selector);
@@ -3339,6 +3347,13 @@ function formatCurrency(price) {
   var _parseInt;
 
   return "".concat((_parseInt = parseInt(price, 10)) === null || _parseInt === void 0 ? void 0 : _parseInt.toFixed(2), " $");
+}
+
+function copyToClipBoard(input) {
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  console.log("copied");
 }
 
 /***/ }),

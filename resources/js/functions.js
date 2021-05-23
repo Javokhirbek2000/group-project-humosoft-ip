@@ -137,3 +137,10 @@ function generateCartHTML(list) {
 function formatCurrency(price) {
     return `${parseInt(price, 10)?.toFixed(2)} $`;
 }
+
+export function copyToClipBoard(input) {
+    input.select();
+    input.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    console.log("copied");
+}
