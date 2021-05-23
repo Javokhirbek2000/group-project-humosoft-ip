@@ -52,27 +52,27 @@
                 </div>
                 <div class="col-md-4 mb-5 mb-xl-0 col-xl text-center">
                     <img  width="200" height="200" class="img-fluid mb-3 rounded-circle" src="img/shahzod.jpg" alt="Card image cap">
-                    <h2 class=fs-4 font-weight-semi-bold mb-0">Shakhzod Mavlonov</h2>
+                    <h2 class="fs-4 font-weight-semi-bold mb-0">Shakhzod Mavlonov</h2>
                     <span class="text-gray-41">Web Developer</span>
                 </div>
                 <div class="col-md-4 mb-5 mb-xl-0 col-xl text-center">
                     <img class="img-fluid mb-3 rounded-circle" src="img/matrix.jpg" alt="Card image cap">
-                    <h2 class=fs-4 font-weight-semi-bold mb-0">Khalimetov Mukhiddin</h2>
+                    <h2 class="fs-4 font-weight-semi-bold mb-0">Khalimetov Mukhiddin</h2>
                     <span class="text-gray-41">Web Developer</span>
                 </div>
                 <div class="col-md-4 mb-5 mb-xl-0 col-xl text-center">
                     <img class="img-fluid mb-3 rounded-circle" src="img/shohruh.jpg" alt="Card image cap">
-                    <h2 class=fs-4 font-weight-semi-bold mb-0">Gulomov Shokhrukhmirzo</h2>
+                    <h2 class="fs-4 font-weight-semi-bold mb-0">Gulomov Shokhrukhmirzo</h2>
                     <span class="text-gray-41">Web Developer</span>
                 </div>
                 <div class="col-md-4 mb-5 mb-xl-0 col-xl text-center">
                     <img class="img-fluid mb-3 rounded-circle" src="img/javohir.jpg" alt="Card image cap">
-                    <h2 class=fs-4 font-weight-semi-bold mb-0">Mirzaakbarov Javokhirbek</h2>
+                    <h2 class="fs-4 font-weight-semi-bold mb-0">Mirzaakbarov Javokhirbek</h2>
                     <span class="text-gray-41">Web Developer</span>
                 </div>
                 <div class="col-md-4 mb-5 mb-xl-0 col-xl text-center">
                     <img class="img-fluid mb-3 rounded-circle" src="img/komiljon.jpg" alt="Card image cap">
-                    <h2 class=fs-4 font-weight-semi-bold mb-0">Yangiboev Komiljon</h2>
+                    <h2 class="fs-4 font-weight-semi-bold mb-0">Yangiboev Komiljon</h2>
                     <span class="text-gray-41">Web Developer</span>
                 </div>
             </div>
