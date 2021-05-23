@@ -4,7 +4,7 @@
   @include('partials.banners')
   <x-section title="Featured Collections">
     <div class="row">
-      @for ($i = 0; $i < 8; $i++)
+      @foreach (App\Models\Collection::where("is_featured", "=", true)->get() as $i => $collection)
         @php
           $isBig = $i == 0 || $i == 1;
         @endphp
@@ -17,17 +17,17 @@
             </div>
           </a>
         </div>
-      @endfor
+      @endforeach
     </div>
   </x-section>
 
   <x-section title="Featured Products">
     <div class="row">
-      @for ($i = 0; $i < 8; $i++)
+      @foreach (App\Models\Product::where("is_featured", "=", true)->get() as $i => $product)
         <div class="col-lg-3 col-md-4 col-sm-6 py-2 px-2 ">
           @include("components.product-card")
         </div>
-      @endfor
+      @endforeach
     </div>
   </x-section>
 @endsection

@@ -26,7 +26,7 @@ class Initial extends Migration
 
             $table->string('name');
             $table->text('description');
-            $table->multiLineString('images');
+            $table->multiLineString('images')->nullable();
             $table->string('brand');
             $table->float('price', 8, 2);
 
@@ -40,7 +40,7 @@ class Initial extends Migration
         Schema::create('collections', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->boolean('is_featured');
             $table->timestamps();
         });
